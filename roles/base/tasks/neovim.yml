@@ -1,0 +1,23 @@
+---
+
+- name: Install dependencies
+  community.general.pacman:
+    name:
+      - lua-language-server
+      - npm
+
+- name: Get config from github
+  git:
+    repo: 'https://github.com/IkariTyux/neovim.git'
+    dest: /home/"{{ local_user }}"
+
+- name: Install packer
+  shell: git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+
+- name: Copy config
+  copy:
+    src: neovim
+    dest: /home/"{{ local_user }}"/.config/nvim
+    owner: "{{ local_user }}"
+    group: "{{ local_user }}"
+    mode: "0755"

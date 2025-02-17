@@ -1,0 +1,46 @@
+---
+
+- name: Change shell
+  user:
+    name: "{{ local_user }}"
+    shell: /bin/zsh
+
+- name: Copy .zshrc
+  copy:
+    src: zshrc
+    dest: /home/"{{ local_user }}"/.zshrc
+    owner: "{{ local_user }}"
+    group: "{{ local_user }}"
+    mode: "0755" 
+
+- name: Copy OMZ
+  copy:
+    src: oh-my-zsh
+    dest: /home/"{{ local_user }}"/.oh-my-zsh
+    owner: "{{ local_user }}"
+    group: "{{ local_user }}"
+    mode: "0755"
+
+- name: Copy tmux config
+  copy:
+   src: tmux.conf
+   dest: /home/"{{ local_user }}"/.tmux.conf
+   owner: "{{ local_user }}"
+   group: "{{ local_user }}"
+   mode: "0755"
+
+- name: Copy lsd config
+  copy:
+   src: lsd
+   dest: /home/"{{ local_user }}"/.config/lsd
+   owner: "{{ local_user }}"
+   group: "{{ local_user }}"
+   mode: "0755"
+
+- name: Copy fastfetch config
+  copy:
+   src: fastfetch
+   dest: /home/"{{ local_user }}"/.config/fastfetch
+   owner: "{{ local_user }}"
+   group: "{{ local_user }}"
+   mode: "0755"
