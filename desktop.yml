@@ -1,0 +1,6 @@
+- name: Setup new device
+  host: localhost
+  become_user: shinji
+  become: yes
+  roles:
+    - base
