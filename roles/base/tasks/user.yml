@@ -8,23 +8,35 @@
 - name: Copy .zshrc
   copy:
     src: zshrc
-    dest: /home/"{{ local_user }}"/.zshrc
+    dest: /home/{{ local_user }}/.zshrc
     owner: "{{ local_user }}"
     group: "{{ local_user }}"
     mode: "0755" 
 
 - name: Copy OMZ
   copy:
-    src: oh-my-zsh
-    dest: /home/"{{ local_user }}"/.oh-my-zsh
+    src: oh-my-zsh/
+    dest: /home/{{ local_user }}/.oh-my-zsh/
     owner: "{{ local_user }}"
     group: "{{ local_user }}"
-    mode: "0755"
+    mode: "0755" 
+
+- name: Install ZSH autosuggestions
+  become_user: "{{ local_user }}"
+  git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions
+    dest: /home/{{ local_user }}/.oh-my-zsh/plugins/zsh-autosuggestions
+
+- name: Install ZSH syntax-highlighting
+  become_user: "{{ local_user }}"
+  git:
+    repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+    dest: /home/{{ local_user }}/.oh-my-zsh/plugins/zsh-syntax-highlighting
 
 - name: Copy tmux config
   copy:
    src: tmux.conf
-   dest: /home/"{{ local_user }}"/.tmux.conf
+   dest: /home/{{ local_user }}/.tmux.conf
    owner: "{{ local_user }}"
    group: "{{ local_user }}"
    mode: "0755"
@@ -32,7 +44,7 @@
 - name: Copy lsd config
   copy:
    src: lsd
-   dest: /home/"{{ local_user }}"/.config/lsd
+   dest: /home/{{ local_user }}/.config
    owner: "{{ local_user }}"
    group: "{{ local_user }}"
    mode: "0755"
@@ -40,7 +52,7 @@
 - name: Copy fastfetch config
   copy:
    src: fastfetch
-   dest: /home/"{{ local_user }}"/.config/fastfetch
+   dest: /home/{{ local_user }}/.config
    owner: "{{ local_user }}"
    group: "{{ local_user }}"
    mode: "0755"

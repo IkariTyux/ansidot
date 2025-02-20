@@ -32,7 +32,7 @@
       - man
       - tldr
       - nfs-utils
-      - tranlate-shell
+      - translate-shell
       - keyd
       - ttf-font-awesome
       - nerd-fonts
@@ -46,3 +46,15 @@
 
 - name: Setup Neovim
   include_tasks: neovim.yml
+
+- name: Allow access to /etc/hosts
+  file:
+    path: /etc/hosts
+    owner: "{{ local_user }}"
+    group: "{{ local_user }}"
+
+- name: Allow access to /etc/resolv.conf
+  file:
+    path: /etc/resolv.conf
+    owner: "{{ local_user }}"
+    group: "{{ local_user }}"
