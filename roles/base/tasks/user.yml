@@ -5,21 +5,8 @@
     name: "{{ local_user }}"
     shell: /bin/zsh
 
-- name: Copy .zshrc
-  copy:
-    src: zshrc
-    dest: /home/{{ local_user }}/.zshrc
-    owner: "{{ local_user }}"
-    group: "{{ local_user }}"
-    mode: "0755" 
-
-- name: Copy OMZ
-  copy:
-    src: oh-my-zsh/
-    dest: /home/{{ local_user }}/.oh-my-zsh/
-    owner: "{{ local_user }}"
-    group: "{{ local_user }}"
-    mode: "0755" 
+- name: Install OMZ
+  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 - name: Install ZSH autosuggestions
   become_user: "{{ local_user }}"
@@ -32,6 +19,14 @@
   git:
     repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
     dest: /home/{{ local_user }}/.oh-my-zsh/plugins/zsh-syntax-highlighting
+
+- name: Copy .zshrc
+  copy:
+    src: zshrc
+    dest: /home/{{ local_user }}/.zshrc
+    owner: "{{ local_user }}"
+    group: "{{ local_user }}"
+    mode: "0755"
 
 - name: Copy tmux config
   copy:

@@ -1,0 +1,31 @@
+---
+
+- name: Allow access to /etc/hosts
+  file:
+    path: /etc/hosts
+    owner: "{{ local_user }}"
+    group: "{{ local_user }}"
+
+- name: Allow access to /etc/resolv.conf
+  file:
+    path: /etc/resolv.conf
+    owner: "{{ local_user }}"
+    group: "{{ local_user }}"
+
+- name: Set touchpad tap to click
+  copy:
+    src: devices/01-touchpad.conf
+    dest: /etc/X11/xorg.conf.d/00-keyboard.conf
+
+- name: Set keyd remaps
+  copy:
+    src: devices/keyd.conf
+    dest: /etc/keyd/default.conf
+    owner: "{{ local_user }}"
+    group: "{{ local_user }}"
+
+- name: Enable keyd
+  systemd:
+    name: keyd
+    state: started
+    enabled: yes

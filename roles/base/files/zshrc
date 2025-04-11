@@ -10,34 +10,45 @@ source $ZSH/oh-my-zsh.sh
 export PATH="$PATH:/home/$USER/.local/bin:/home/$USER/.local/bin/scripts"
 
 ### Aliases ###
-# Shell
-alias reset="source ~/.zshrc"
+# Customization
+alias ff="fastfetch --kitty-icat ~/Pictures/.pp/neofetch.png"
 
 # Tmux
-alias tmuxa="tmux attach-session -t"
-alias tmuxn="tmux new-session -s"
+alias tmuxa="tmux attach"
 alias tmuxk="tmux kill-session -t "
 
 # Files
 alias ls="lsd"
 alias la="lsd -al"
 alias ll="lsd -l"
-alias lf="lsd -d */"
 
 # Text
 alias xcpy="xsel -ib"
 alias xpst="xsel -ob"
 alias xmty="xsel -cb"
-alias vi="nvim"
 alias vim"nvim"
-alias clcat="sed 's/#.*//g' | sed '/^[[:space:]]*$/d'"
 
 # Network
-alias ipa="ip a sh wlp2s0 && ip a sh wg0 && sudo wg"
+alias ipa="ip a sh wlp2s0 && ip a sh wg0 && ip a sh eth0"
 alias arpscan="sudo arp-scan --localnet"
 
 # Download
 alias yt-flac="yt-dlp -x --audio-format flac"
+alias yt-mp4='yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best"'
 
-# Customization
-alias ff="fastfetch"
+# Shell
+alias reset="source ~/.zshrc"
+alias watch="watch -n 0.5 -t"
+
+## Timer function
+function preexec() {
+  timer=${timer:-$SECONDS}
+}
+
+function precmd() {
+  if [ $timer ] ; then
+    timer_show=$(($SECONDS - $timer))
+    export RPROMPT="%F{cyan}${timer_show}s%f %B%F{14}󰣇%b%f | %B%F{magenta}%M%f%b"
+    unset timer
+  fi
+}
