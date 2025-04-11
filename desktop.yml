@@ -1,6 +1,5 @@
 - name: Setup new device
-  host: localhost
-  become_user: shinji
+  hosts: 172.16.50.5
   become: yes
   roles:
     - base
