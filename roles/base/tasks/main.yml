@@ -10,7 +10,6 @@
   include_tasks: packages.yml
 
 - name: Set system-wide settings
-  become: yes
   include_tasks: system-settings.yml
 
 - name: Deploy dotfiles
