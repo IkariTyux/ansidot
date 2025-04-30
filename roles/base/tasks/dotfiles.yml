@@ -2,7 +2,7 @@
 
 - name: Get dotfiles repo
   git:
-    repo: https://github.com/IkariTyux/dotfiles.git
+    repo: git@github.com/IkariTyux/dotfiles.git
     dest: /home/{{ local_user }}/Code/github/dotfiles
 
 - name: Stow folder

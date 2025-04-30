@@ -3,11 +3,10 @@
 - name: Install all programs
   community.general.pacman:
     name:
+      - bash-completion
       - kitty
       - tmux
-      - zsh
       - lsd
-      - vi
       - vim
       - neovim
       - git
@@ -16,12 +15,9 @@
       - rsync
       - btop
       - htop
-      - nvtop
-      - fzf
       - xsel
       - fastfetch
       - arp-scan
-      - minicom
       - bind
       - traceroute
       - yt-dlp

@@ -8,11 +8,11 @@
 - name: Install base programs and cli tools
   include_tasks: packages.yml
 
-- name: Set user environment
-  include_tasks: user-config.yml
-
 - name: Set system-wide settings
   include_tasks: system-settings.yml
 
 - name: Deploy dotfiles
   include_tasks: dotfiles.yml
+
+- name: Setup Neovim
+  include_tasks: neovim.yml
