@@ -1,5 +1,6 @@
 - name: Setup new device
   hosts: localhost 
+  connection: local
   become: yes
   roles:
     - base
