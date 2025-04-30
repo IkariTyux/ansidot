@@ -1,5 +1,5 @@
 - name: Setup new device
-  hosts: 172.16.50.10
+  hosts: localhost 
   become: yes
   roles:
     - base
