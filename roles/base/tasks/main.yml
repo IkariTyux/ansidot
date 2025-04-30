@@ -1,10 +1,10 @@
 ---
 
 - name: Update system
-  become: yes
   community.general.pacman:
     update_cache: yes
     upgrade: yes
+  become: yes
 
 - name: Install base programs and cli tools
   include_tasks: packages.yml
