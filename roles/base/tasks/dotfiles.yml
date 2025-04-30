@@ -1,0 +1,10 @@
+---
+
+- name: Get dotfiles repo
+  git:
+    repo: https://github.com/IkariTyux/dotfiles.git
+    dest: /home/{{ local_user }}/Code/github/dotfiles
+
+- name: Stow folder
+  become_user: "{{ local_user }}"
+  shell: cd ~/Code/github/dotfiles && stow -t $HOME .  

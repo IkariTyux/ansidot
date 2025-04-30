@@ -1,0 +1,6 @@
+---
+
+- name: Set touchpad tap to click
+  copy:
+    src: devices/01-touchpad.conf
+    dest: /etc/X11/xorg.conf.d/00-keyboard.conf

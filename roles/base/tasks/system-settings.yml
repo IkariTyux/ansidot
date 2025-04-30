@@ -1,0 +1,31 @@
+---
+
+- name: Allow access to /etc/hosts
+  file:
+    path: /etc/hosts
+    owner: "{{ local_user }}"
+    group: "{{ local_user }}"
+
+- name: Allow access to /etc/resolv.conf
+  file:
+    path: /etc/resolv.conf
+    owner: "{{ local_user }}"
+    group: "{{ local_user }}"
+
+- name: Create keyd folder
+  file:
+    state: directory
+    path: /etc/keyd
+    owner: "{{ local_user }}"
+    group: "{{ local_user }}"
+
+- name: Copy keyd config
+  copy:
+    src: devices/keyd.conf
+    dest: /etc/keyd/default.conf
+
+- name: Enable keyd
+  systemd:
+    name: keyd
+    state: started
+    enabled: yes

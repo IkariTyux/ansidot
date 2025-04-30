@@ -1,0 +1,40 @@
+---
+
+- name: Install all programs
+  community.general.pacman:
+    name:
+      - kitty
+      - tmux
+      - zsh
+      - lsd
+      - vi
+      - vim
+      - neovim
+      - git
+      - stow
+      - curl
+      - rsync
+      - btop
+      - htop
+      - nvtop
+      - fzf
+      - xsel
+      - fastfetch
+      - arp-scan
+      - minicom
+      - bind
+      - traceroute
+      - yt-dlp
+      - man
+      - tldr
+      - unzip
+      - gzip
+      - imagemagick
+      - nfs-utils
+      - translate-shell
+      - keyd
+      - ttf-font-awesome
+      - noto-fonts-cjk 
+      - noto-fonts-emoji
+      - noto-fonts
+    state: present
