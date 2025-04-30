@@ -1,6 +1,6 @@
 - name: Setup new device
   hosts: localhost 
   connection: local
-  become: yes
+  become_user: "{{ local_user }}"
   roles:
     - base

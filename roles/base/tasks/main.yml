@@ -1,6 +1,7 @@
 ---
 
 - name: Update system
+  become: yes
   community.general.pacman:
     update_cache: yes
     upgrade: yes
@@ -9,6 +10,7 @@
   include_tasks: packages.yml
 
 - name: Set system-wide settings
+  become: yes
   include_tasks: system-settings.yml
 
 - name: Deploy dotfiles

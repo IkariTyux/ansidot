@@ -1,6 +1,7 @@
 ---
 
 - name: Install all programs
+  become: yes
   community.general.pacman:
     name:
       - bash-completion
