@@ -2,9 +2,22 @@
 
 - name: Get dotfiles repo
   git:
-    repo: git@github.com/IkariTyux/dotfiles.git
+    repo: git@github.com:IkariTyux/dotfiles.git
     dest: /home/{{ local_user }}/Code/github/dotfiles
 
 - name: Stow folder
   become_user: "{{ local_user }}"
   shell: cd ~/Code/github/dotfiles && stow -t $HOME .  
+
+- name: Install neovim dependencies
+  community.general.pacman:
+    name:
+      - lua-language-server
+      - npm
+
+- name: Install packer for neovim
+  become_user: "{{ local_user }}"
+  git:
+    repo: https://github.com/wbthomason/packer.nvim 
+    dest: /home/{{ local_user }}/.local/share/nvim/site/pack/packer/start/packer.nvim
+    depth: 1

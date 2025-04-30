@@ -13,6 +13,3 @@
 
 - name: Deploy dotfiles
   include_tasks: dotfiles.yml
-
-- name: Setup Neovim
-  include_tasks: neovim.yml
