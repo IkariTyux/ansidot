@@ -1,5 +1,5 @@
 - name: Setup new device
-  hosts: 172.16.50.5
+  hosts: 172.16.50.10
   become: yes
   roles:
     - base

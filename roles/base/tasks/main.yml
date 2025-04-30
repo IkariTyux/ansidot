@@ -5,48 +5,14 @@
     update_cache: yes
     upgrade: yes
 
-- name: Install all programs
-  community.general.pacman:
-    name:
-      - kitty
-      - tmux
-      - zsh
-      - lsd
-      - vi
-      - vim
-      - neovim
-      - git
-      - curl
-      - rsync
-      - btop
-      - htop
-      - nvtop
-      - fzf
-      - xsel
-      - fastfetch
-      - arp-scan
-      - minicom
-      - bind
-      - traceroute
-      - yt-dlp
-      - man
-      - tldr
-      - unzip
-      - imagemagick
-      - nfs-utils
-      - translate-shell
-      - keyd
-      - ttf-font-awesome
-      - noto-fonts-cjk 
-      - noto-fonts-emoji
-      - noto-fonts
-    state: present
+- name: Install base programs and cli tools
+  include_tasks: packages.yml
 
-- name: Deploy user configuration
-  include_tasks: user.yml
+- name: Set user environment
+  include_tasks: user-config.yml
 
-- name: Setup Neovim
-  include_tasks: neovim.yml
+- name: Set system-wide settings
+  include_tasks: system-settings.yml
 
-- name: Set custom settings
-  include_tasks: settings.yml
+- name: Deploy dotfiles
+  include_tasks: dotfiles.yml
