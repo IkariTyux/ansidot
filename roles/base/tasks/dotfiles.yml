@@ -6,7 +6,12 @@
     repo: git@github.com:IkariTyux/dotfiles.git
     dest: /home/{{ local_user }}/Code/github/dotfiles
 
-- name: Stow folder
+- name: Preparation to stow
+  file:
+    path: /home/{{ local_user }}/.bashrc
+    state: absent
+
+- name: Stow dotfiles
   become_user: "{{ local_user }}"
   shell: cd ~/Code/github/dotfiles && stow -t $HOME .  
 
