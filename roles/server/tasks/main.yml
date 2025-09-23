@@ -1,0 +1,22 @@
+---
+
+- name: Setup user
+  include_tasks: users.yml
+
+- name: Setup basic config.
+  include_tasks: config.yml
+
+- name: Install programs
+  include_tasks: programs.yml
+
+- name: Setup NAS
+  include_tasks: nas.yml
+
+#- name: Setup Virtualization
+#  include_tasks: virt.yml
+#
+#- name: Setup Home Cinema
+#  include_tasks: home_cinema.yml
+#
+#- name: Setup Music receiver
+#  include_tasks: music.yml

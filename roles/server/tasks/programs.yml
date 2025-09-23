@@ -1,0 +1,31 @@
+---
+
+- name: Update System
+  apt:
+    update_cache: true
+    upgrade: full
+
+- name: Install basic programs
+  apt:
+    name:
+      - git
+      - curl
+      - htop
+      - btop
+    state: present
+
+- name: Install server utils
+  apt:
+    name:
+      - rsync
+      - nfs-kernel-server
+      - lxc
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-buildx-plugin
+      - docker-compose-plugin
+      - lxc
+      - kodi
+      - bluez
+    state: present

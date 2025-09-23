@@ -1,0 +1,5 @@
+- name: Deploy new HomeServer
+  hosts: star-destroyer
+  become: yes
+  roles:
+    - server
