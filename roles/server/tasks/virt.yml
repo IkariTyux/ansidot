@@ -1,0 +1,31 @@
+---
+
+- name: Add Docker repos
+  script: scripts/docker_repo.sh 
+
+- name: Install docker
+  apt:
+    name:
+      - docker-ce 
+      - docker-ce-cli
+      - containerd.io
+      - docker-buildx-plugin
+      - docker-compose-plugin
+    state: present
+
+- name: Install LXC
+  apt:
+    name:
+      - lxc
+    state: present
+
+- name: Install KVM
+  apt:
+    name:
+      - qemu-kvm
+      - libvirt-clients
+      - libvirt-daemon-system
+      - bridge-utils
+      - virtinst
+      - libvirt-daemon
+    state: present

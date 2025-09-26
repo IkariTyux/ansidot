@@ -12,9 +12,9 @@
 - name: Setup NAS
   include_tasks: nas.yml
 
-#- name: Setup Virtualization
-#  include_tasks: virt.yml
-#
+- name: Setup Virtualization
+  include_tasks: virt.yml
+
 #- name: Setup Home Cinema
 #  include_tasks: home_cinema.yml
 #

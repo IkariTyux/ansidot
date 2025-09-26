@@ -5,8 +5,8 @@
     state: directory
     path: /nas
     owner: root
-    group: root
-    mode: "0644"
+    group: deploy
+    mode: "0774"
 
 - name: Mount main storage
   ansible.posix.mount:
